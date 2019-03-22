@@ -15,7 +15,7 @@
     </b-container>
 </template>
 <script>
-const apiURL = 'http://localhost:3000';
+const apiURL = 'https://shoppingcartapi-icwz30bz4.now.sh';
 import axios from 'axios';
 export default {
     name: 'AdminEditProduct',

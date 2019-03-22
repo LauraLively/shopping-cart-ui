@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import apiURL from '../config'
+const apiURL = 'https://shoppingcartapi-icwz30bz4.now.sh';
 export default {
   name: 'productCard',
   props: {
