@@ -5,22 +5,24 @@
       <div class="card-body">
         <h4 class="card-title">{{ product.name }} </h4>
         <h5>${{product.price}} </h5>
-         <b-button href="#" variant="info">Add to Cart</b-button>
+        <div class="product__action">
+          <b-button>Add to Cart</b-button>
+        </div>      
       </div>
     </div>
   </div>
 </template>
 
 <script>
-const apiURL = 'http://localhost:3000';
+import apiURL from '../config'
 export default {
-    name: 'productCard',
+  name: 'productCard',
   props: {
     // this component expects a prop of type object
     product: {
       type: Object,
       required: true
     }
-  }
+  },
 }
 </script>

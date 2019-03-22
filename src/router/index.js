@@ -5,6 +5,10 @@ import Products from '@/components/ProductList'
 import Product from '@/components/Product'
 import Cart from '@/components/cart'
 import Admin from '@/components/admin'
+import AdminProductList from '@/components/AdminProductList'
+import AdminNewProduct from '@/components/AdminNewProduct'
+import AdminEditProduct from '@/components/AdminEditProduct'
+
 Vue.use(Router)
 
 export default new Router({
@@ -31,8 +35,25 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'admin',
-      component: Admin
+      name: '',
+      component: Admin,
+      children: [
+       {
+          path: 'new',
+          name: 'AdminNewProduct',
+          component: AdminNewProduct
+       },
+        {
+          path: '',
+          name: 'Admin',
+          component: AdminProductList
+        },
+        {
+          path: 'edit/:sku',
+          name: 'AdminEditProduct',
+          component: AdminEditProduct
+        }
+      ]
     },
 
   ]

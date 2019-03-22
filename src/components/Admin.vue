@@ -2,47 +2,29 @@
 <div>
     <h1>Admin</h1>
     <b-container>
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="admin-form-right">
-            <h3>Add a Product</h3>
-            <b-form-input id="name" type="text" required placeholder="Name of Product" />
-            <b-form-input id="SKU" type="text" required placeholder="SKU of Product" />
-            <b-form-input id="price" type="number" required placeholder="Price" />
-            <b-form-input id="image" type="text" required placeholder="URL of Product" />
-            <b-form-textarea id="description" type="text" required placeholder="Description" />
-            <b-button type="submit" variant="info">Submit</b-button>
-            <b-button type="reset" variant="secondary">Reset</b-button>
-        </b-form>
-    </b-container>
-    <b-container>
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="admin-form-left">
-            <h3>Edit a Product</h3>
-            <b-form-input id="name" type="text" required placeholder="Name of Product" />
-            <b-form-input id="SKU" type="text" required placeholder="SKU of Product" />
-            <b-form-input id="price" type="number" required placeholder="Price" />
-            <b-form-input id="image" type="text" required placeholder="URL of Product" />
-            <b-form-textarea id="description" type="text" required placeholder="Description" />
-            <b-button type="submit" variant="info">Submit</b-button>
-            <b-button type="reset" variant="secondary">Reset</b-button>
-        </b-form>
+        <div class="admin-new">
+            <div class="container">
+                    <ul class="admin-menu">
+                        <li>
+                            <router-link to="/admin">View Products</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/admin/new">New Product</router-link>
+                        </li>
+                    </ul>
+                <router-view></router-view>
+            </div>
+        </div>
     </b-container>
 </div>
 </template>
 
 <script>
+
 export default {
+
     data() {
         return {
-            form: {
-                email: '',
-                name: '',
-                food: null,
-                checked: []
-            },
-            foods: [{
-                text: 'Select One',
-                value: null
-            }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
-            show: true
         }
     },
     methods: {
@@ -53,10 +35,10 @@ export default {
         onReset(evt) {
             evt.preventDefault()
             /* Reset our form values */
-            this.form.email = ''
             this.form.name = ''
-            this.form.food = null
-            this.form.checked = []
+            this.form.SKU = ''
+            this.form.price = ''
+            this.form.description = ''
             /* Trick to reset/clear native browser form validation state */
             this.show = false
             this.$nextTick(() => {
@@ -68,20 +50,47 @@ export default {
 </script>
 
 <style>
-.admin-form-right input, textarea, button{
-  margin-bottom: 1em;
+.admin-form-right input,
+textarea,
+button {
+    margin-bottom: 1em;
 }
-.admin-form-left input, textarea, button{
-  margin-bottom: 1em;
+.admin-form-right{
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
-.admin-form-right {
-  float: right;
-  margin-right: 1em;
-  width: 38vw;
+.admin-menu li {
+    list-style-type: none;
 }
-.admin-form-left {
-  float: left;
-  margin-right: 1em;
-  width: 38vw;
-} 
+.admin-menu {
+    padding-inline-start: 0px !important;
+    margin-left: 5rem;
+    margin-right: 5rem;
+
+}
+
+.admin-menu a {
+    display: block;
+    background:#17a2b8 !important;
+    border: 1px solid #71AEB7;
+    color: #fff;
+    padding: 10px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    transform: scaleX(1);
+    transition: transform 200ms ease-in;
+    text-align: center;
+}
+
+.admin-menu a:hover {
+    text-decoration: none;
+    transform: scaleX(1.02);
+}
+
+.admin-new,
+.admin-products {
+    padding: 30px 0;
+}
+
 </style>
